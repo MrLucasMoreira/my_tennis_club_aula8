@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>My Tennis Club {% block title %}{% endblock %}</title>
+    {% load static %}
+    <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" crossorigins="anonymous">
+    <script src="https://kit.fontawesome.com/1cc8d22ca4.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="container">
+        {% include 'navbar.html' %}
+
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

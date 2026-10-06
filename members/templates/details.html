@@ -1,0 +1,24 @@
+{% extends "master.html" %}
+
+{% block title %} - Details about {{ mymember.firstname}} {{ mymember.lastname}} {% endblock title %}
+
+{% block content %}
+<div class="card mt-2">
+    <div class="card-header">
+        Details about {{mymember.firstname}} {{mymember.lastname}}
+    </div>
+    <div class="card-body">
+
+        <h1>{{mymember.firstname}} {{mymember.lastname}}</h1>
+
+        {% if mymember.foto %}
+        <p><img src="{{ mymember.foto.url }}" width="100"></p>
+        {% endif %}
+        <p>Phone: {{mymember.phone}}</p>
+        <p>Member since: {{mymember.joined_date}}</p>
+
+        <p>Back to <a href="/members">Members</a></p>
+
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends "master.html" %}
+
+{% block title %}
+- Alterando membro
+{% endblock title %}
+
+{% block content %}
+
+<div class="card mt-2">
+    <div class="card-header">
+        Alterando membro
+    </div>
+
+    <div class="card-body">
+
+        <form action="updaterecord/{{ mymember.id }}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <p>Plan:
+                <select name="plan">
+                    {% for x in myplans %}
+                    <option {% if x.id == mymember.plan.id %} selected {% endif %} value="{{ x.id }}">
+                        {{ x.title }}
+                    </option>
+                    {% endfor %}
+                </select>
+            </p>
+            First Name:<br>
+            <input type="text" name="first" value="{{ mymember.firstname }}">
+            <br><br>
+            Last Name:<br>
+            <input type="text" name="last" value="{{ mymember.lastname }}">
+            <br><br>
+            Foto:<br>
+            <input type="file" name="foto">
+            <br><br>
+            {% if mymember.foto %}
+            <img src="{{ mymember.foto.url }}" width="100">
+            <br><br>
+            {% endif %}
+            Documento:<br>
+            <input type="file" name="documento">
+            <br><br>
+            {% if mymember.documento %}
+            <a href="{{ mymember.documento.url }}">ver documento</a>
+            <br><br>
+            {% endif %}
+            <input type="submit" value="Submit">
+        </form>
+
+        <p><a href="/members">Voltar</a></p>
+
+    </div>
+
+</div>
+
+{% endblock %}

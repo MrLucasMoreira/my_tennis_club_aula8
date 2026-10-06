@@ -1,0 +1,45 @@
+{% extends "master.html" %}
+
+{% block title %}
+- Novo membro
+{% endblock title %}
+
+{% block content %}
+
+<div class="card mt-2">
+    <div class="card-header">
+        Novo membro
+    </div>
+
+    <div class="card-body">
+
+        <form action="addrecord/" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <p>Plan:
+            <select name="plan">
+                {% for x in myplans %}
+                <option value="{{ x.id }}">{{ x.title }}</option>
+                {% endfor %}
+            </select></p>
+            First Name:<br>
+            <input type="text" name="first">
+            <br><br>
+            Last Name:<br>
+            <input type="text" name="last">
+            <br><br>
+            Foto:<br>
+            <input type="file" name="foto">
+            <br><br>
+            Documento:<br>
+            <input type="file" name="documento">
+            <br><br>
+            <input type="submit" value="Submit">
+        </form>
+
+        <p><a href="/members">Voltar</a></p>
+
+    </div>
+
+</div>
+
+{% endblock %}
